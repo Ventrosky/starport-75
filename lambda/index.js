@@ -2,13 +2,31 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
+const i18next = require('i18next');
+const languageStrings = require('./languageStrings');
 
+const LocalisationRequestInterceptor = {
+    process(handlerInput) {
+        i18next.init({
+            lng: Alexa.getLocale(handlerInput.requestEnvelope),
+            resources: languageStrings
+        }).then((i18n) => {
+            handlerInput.t = (...args) => i18n(...args);
+        });
+    }
+};
+
+// LocalisationRequestInterceptor is a request interceptor that adds a t() function to handlerInput
+//
+// When a request comes into our skill, this interceptor’s process() function will use the user’s locale
+// and the languageStrings module to initialize the “i18next” module and then use the resulting i18n function 
+// to lookup a string from the externalized file
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome to Star Port 75 Travel. How can I help you?';
+        const speakOutput = handlerInput.t('WELCOME_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -21,7 +39,7 @@ const HelloWorldIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Have a stellar day!';
+        const speakOutput = handlerInput.t('HELLO_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
@@ -34,7 +52,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = handlerInput.t('HELP_MSG');
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -49,7 +67,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = handlerInput.t('GOODBYE_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
@@ -61,7 +79,7 @@ const FallbackIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.FallbackIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Sorry, I don\'t know about that. Please try again.';
+        const speakOutput = handlerInput.t('FALLBACK_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -88,7 +106,7 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
-        const speakOutput = `You just triggered ${intentName}`;
+        const speakOutput =  handlerInput.t('REFLECTOR_MSG', intentName);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -106,7 +124,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.stack}`);
-        const speakOutput = `Sorry, I had trouble doing what you asked. Please try again.`;
+        const speakOutput = handlerInput.t('ERROR_MSG', intentName);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -130,5 +148,8 @@ exports.handler = Alexa.SkillBuilders.custom()
         ) 
     .addErrorHandlers(
         ErrorHandler,
+        )
+    .addRequestInterceptors(
+        LocalisationRequestInterceptor
         )
     .lambda();
