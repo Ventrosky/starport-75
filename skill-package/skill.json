@@ -11,6 +11,56 @@
           ],
           "name": "starport-75",
           "description": "Sample Full Description"
+        },
+        "en-GB": {
+          "summary": "Sample Short Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "name": "starport-75",
+          "description": "Sample Full Description"
+        },
+        "en-CA": {
+          "summary": "Sample Short Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "name": "starport-75",
+          "description": "Sample Full Description"
+        },
+        "en-AU": {
+          "summary": "Sample Short Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "name": "starport-75",
+          "description": "Sample Full Description"
+        },
+        "en-IN": {
+          "summary": "Sample Short Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "name": "starport-75",
+          "description": "Sample Full Description"
+        },
+        "it-IT": {
+          "summary": "Sample Short Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "name": "starport-75",
+          "description": "Sample Full Description"
         }
       },
       "isAvailableWorldwide": true,
@@ -19,7 +69,11 @@
       "distributionCountries": []
     },
     "apis": {
-      "custom": {}
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:221150531854:function:ask-starport-75-default-default-1628346542127"
+        }
+      }
     },
     "manifestVersion": "1.0"
   }
