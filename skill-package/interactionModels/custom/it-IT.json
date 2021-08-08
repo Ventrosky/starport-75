@@ -33,7 +33,7 @@
                 {
                     "name": "ScheduleTripIntent",
                     "samples": [
-                        "programma un viaggio verso {destination} partendo il {departureDate} e tornando ila {returnDate}",
+                        "programma un viaggio verso {destination} partendo il {departureDate} e tornando il {returnDate}",
                         "pianifica un viaggio dal {departureDate} al {returnDate} per visitare {destination}"
                     ],
                     "slots": [
@@ -68,7 +68,7 @@
                         {
                             "id": "MERCURY",
                             "name": {
-                                "value": "Mercury",
+                                "value": "Mercurio",
                                 "synonyms": [
                                     "quello più vicino al sole",
                                     "il pianeta veloce"
@@ -78,7 +78,7 @@
                         {
                             "id": "VENUS",
                             "name": {
-                                "value": "Venus",
+                                "value": "Venere",
                                 "synonyms": [
                                     "la stella del mattino",
                                     "la stella della sera"
@@ -88,7 +88,7 @@
                         {
                             "id": "EARTH",
                             "name": {
-                                "value": "Earth",
+                                "value": "Terra",
                                 "synonyms": [
                                     "il pianeta blu",
                                     "la grande biglia blu",
@@ -99,7 +99,7 @@
                         {
                             "id": "MARS",
                             "name": {
-                                "value": "Mars",
+                                "value": "Marte",
                                 "synonyms": [
                                     "il pianeta rosso"
                                 ]
@@ -108,7 +108,7 @@
                         {
                             "id": "JUPITER",
                             "name": {
-                                "value": "Jupiter",
+                                "value": "Giove",
                                 "synonyms": [
                                     "quello grande",
                                     "il pianeta gigante",
@@ -119,7 +119,7 @@
                         {
                             "id": "SATURN",
                             "name": {
-                                "value": "Saturn",
+                                "value": "Saturno",
                                 "synonyms": [
                                     "il pianeta inanellato"
                                 ]
@@ -128,7 +128,7 @@
                         {
                             "id": "URANUS",
                             "name": {
-                                "value": "Uranus",
+                                "value": "Urano",
                                 "synonyms": [
                                     "il gigante di ghiaccio"
                                 ]
@@ -137,7 +137,7 @@
                         {
                             "id": "NEPTUNE",
                             "name": {
-                                "value": "Neptune",
+                                "value": "Nettuno",
                                 "synonyms": [
                                     "il pianeta blu"
                                 ]
@@ -146,7 +146,7 @@
                         {
                             "id": "PLUTO",
                             "name": {
-                                "value": "Pluto",
+                                "value": "Plutone",
                                 "synonyms": [
                                     "il pianeta nano"
                                 ]
