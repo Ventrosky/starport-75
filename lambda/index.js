@@ -6,6 +6,7 @@ const i18next = require('i18next');
 const languageStrings = require('./languageStrings');
 const ScheduleTripIntentHandler = require('./handlers/ScheduleTripIntentHandler');
 const HelloWorldIntentHandler = require('./handlers/HelloWorldIntentHandler');
+const FavoritePlanetsIntentHandler = require('./handlers/FavoritePlanetsIntentHandler');
 const StandardHandlers = require('./handlers/StandardHandlers');
 
 const LocalisationRequestInterceptor = {
@@ -24,9 +25,10 @@ const LocalisationRequestInterceptor = {
 // defined are included below. The order matters - they're processed top to bottom.
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
-        StandardHandlers.LaunchRequestHandler,
         HelloWorldIntentHandler,
         ScheduleTripIntentHandler,
+        FavoritePlanetsIntentHandler,
+        StandardHandlers.LaunchRequestHandler,
         StandardHandlers.HelpIntentHandler,
         StandardHandlers.CancelAndStopIntentHandler,
         StandardHandlers.FallbackIntentHandler,

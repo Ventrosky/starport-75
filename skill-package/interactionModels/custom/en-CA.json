@@ -52,6 +52,23 @@
                     ]
                 },
                 {
+                    "name": "FavoritePlanetsIntent",
+                    "samples": [
+                        "my favorite planets are {planets}",
+                        "i like {planets}",
+                        "{planets} are my favorite"
+                    ],
+                    "slots": [
+                        {
+                            "name": "planets",
+                            "type": "PLANETS",
+                            "multipleValues": {
+                                "enabled": true
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "AMAZON.FallbackIntent",
                     "samples": []
                 },
