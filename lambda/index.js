@@ -4,7 +4,8 @@
 const Alexa = require('ask-sdk-core');
 const i18next = require('i18next');
 const languageStrings = require('./languageStrings');
-const ScheduleTripIntentHandler = require('./ScheduleTripIntentHandler');
+const ScheduleTripIntentHandler = require('./handlers/ScheduleTripIntentHandler');
+const HelloWorldIntentHandler = require('./handlers/HelloWorldIntentHandler');
 
 const LocalisationRequestInterceptor = {
     process(handlerInput) {
@@ -34,19 +35,7 @@ const LaunchRequestHandler = {
             .getResponse();
     }
 };
-const HelloWorldIntentHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
-    },
-    handle(handlerInput) {
-        const speakOutput = handlerInput.t('HELLO_MSG');
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
-};
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -61,6 +50,7 @@ const HelpIntentHandler = {
             .getResponse();
     }
 };
+
 const CancelAndStopIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -74,6 +64,7 @@ const CancelAndStopIntentHandler = {
             .getResponse();
     }
 };
+
 const FallbackIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -87,6 +78,7 @@ const FallbackIntentHandler = {
             .getResponse();
     }
 };
+
 const SessionEndedRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'SessionEndedRequest';

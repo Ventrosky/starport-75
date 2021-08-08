@@ -1,5 +1,5 @@
 const Alexa = require('ask-sdk-core');
-const getResolvedSlotValue = require('./Helpers');
+const getResolvedSlotValue = require('../Helpers');
 
 const ScheduleTripIntentHandler = {
     canHandle(handlerInput) {
@@ -21,4 +21,4 @@ const ScheduleTripIntentHandler = {
     },
 };
 
-module.exports=ScheduleTripIntentHandler;
+module.exports = ScheduleTripIntentHandler;
