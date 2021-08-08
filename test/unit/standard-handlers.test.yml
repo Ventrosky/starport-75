@@ -1,0 +1,18 @@
+---
+configuration:
+  description: Tests for standard request handlers
+---
+- test: Cancel request
+- AMAZON.CancelIntent:
+  - prompt: Goodbye!
+---
+- test: Stop request
+- AMAZON.StopIntent:
+  - prompt: Goodbye!
+---
+- test: Fallback Intent
+- AMAZON.FallbackIntent:
+  - prompt: Sorry, I don't know about that. Please try again.
+---
+- test: Session ended request
+- SessionEndedRequest:
