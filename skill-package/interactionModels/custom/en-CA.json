@@ -31,6 +31,27 @@
                     ]
                 },
                 {
+                    "name": "ScheduleTripIntent",
+                    "samples": [
+                        "schedule a trip to {destination} leaving {departureDate} and returning {returnDate}",
+                        "plan a trip between {departureDate} and {returnDate} to visit {destination}"
+                    ],
+                    "slots": [
+                        {
+                            "name": "destination",
+                            "type": "PLANETS"
+                        },
+                        {
+                            "name": "departureDate",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "returnDate",
+                            "type": "AMAZON.DATE"
+                        }
+                    ]
+                },
+                {
                     "name": "AMAZON.FallbackIntent",
                     "samples": []
                 },
@@ -39,7 +60,100 @@
                     "samples": []
                 }
             ],
-            "types": [],
+            "types": [
+                {
+                    "name": "PLANETS",
+                    "values": [
+                        {
+                            "id": "MERCURY",
+                            "name": {
+                                "value": "Mercury",
+                                "synonyms": [
+                                    "the one closest to the sun",
+                                    "the swift planet"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "VENUS",
+                            "name": {
+                                "value": "Venus",
+                                "synonyms": [
+                                    "the morning star",
+                                    "the evening star"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "EARTH",
+                            "name": {
+                                "value": "Earth",
+                                "synonyms": [
+                                    "the blue planet",
+                                    "the big blue marble",
+                                    "the third rock from the sun"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "MARS",
+                            "name": {
+                                "value": "Mars",
+                                "synonyms": [
+                                    "the red planet"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "JUPITER",
+                            "name": {
+                                "value": "Jupiter",
+                                "synonyms": [
+                                    "the big one",
+                                    "the giant planet",
+                                    "the one with an eye"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "SATURN",
+                            "name": {
+                                "value": "Saturn",
+                                "synonyms": [
+                                    "the ringed planet"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "URANUS",
+                            "name": {
+                                "value": "Uranus",
+                                "synonyms": [
+                                    "the ice giant"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "NEPTUNE",
+                            "name": {
+                                "value": "Neptune",
+                                "synonyms": [
+                                    "the blue planet"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "PLUTO",
+                            "name": {
+                                "value": "Pluto",
+                                "synonyms": [
+                                    "the dwarf planet"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ],
             "modelConfiguration": {
                 "fallbackIntentSensitivity": {
                     "level": "HIGH"

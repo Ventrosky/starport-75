@@ -31,6 +31,27 @@
                     ]
                 },
                 {
+                    "name": "ScheduleTripIntent",
+                    "samples": [
+                        "programma un viaggio verso {destination} partendo il {departureDate} e tornando ila {returnDate}",
+                        "pianifica un viaggio dal {departureDate} al {returnDate} per visitare {destination}"
+                    ],
+                    "slots": [
+                        {
+                            "name": "destination",
+                            "type": "PLANETS"
+                        },
+                        {
+                            "name": "departureDate",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "returnDate",
+                            "type": "AMAZON.DATE"
+                        }
+                    ]
+                },
+                {
                     "name": "AMAZON.FallbackIntent",
                     "samples": []
                 },
@@ -39,7 +60,101 @@
                     "samples": []
                 }
             ],
-            "types": []
+           
+            "types": [
+                {
+                    "name": "PLANETS",
+                    "values": [
+                        {
+                            "id": "MERCURY",
+                            "name": {
+                                "value": "Mercury",
+                                "synonyms": [
+                                    "quello più vicino al sole",
+                                    "il pianeta veloce"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "VENUS",
+                            "name": {
+                                "value": "Venus",
+                                "synonyms": [
+                                    "la stella del mattino",
+                                    "la stella della sera"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "EARTH",
+                            "name": {
+                                "value": "Earth",
+                                "synonyms": [
+                                    "il pianeta blu",
+                                    "la grande biglia blu",
+                                    "la terza roccia del sole"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "MARS",
+                            "name": {
+                                "value": "Mars",
+                                "synonyms": [
+                                    "il pianeta rosso"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "JUPITER",
+                            "name": {
+                                "value": "Jupiter",
+                                "synonyms": [
+                                    "quello grande",
+                                    "il pianeta gigante",
+                                    "quello con un occhio"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "SATURN",
+                            "name": {
+                                "value": "Saturn",
+                                "synonyms": [
+                                    "il pianeta inanellato"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "URANUS",
+                            "name": {
+                                "value": "Uranus",
+                                "synonyms": [
+                                    "il gigante di ghiaccio"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "NEPTUNE",
+                            "name": {
+                                "value": "Neptune",
+                                "synonyms": [
+                                    "il pianeta blu"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "PLUTO",
+                            "name": {
+                                "value": "Pluto",
+                                "synonyms": [
+                                    "il pianeta nano"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     }
   }

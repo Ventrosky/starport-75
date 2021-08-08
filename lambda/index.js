@@ -4,6 +4,7 @@
 const Alexa = require('ask-sdk-core');
 const i18next = require('i18next');
 const languageStrings = require('./languageStrings');
+const ScheduleTripIntentHandler = require('./ScheduleTripIntentHandler');
 
 const LocalisationRequestInterceptor = {
     process(handlerInput) {
@@ -142,6 +143,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         HelloWorldIntentHandler,
+        ScheduleTripIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

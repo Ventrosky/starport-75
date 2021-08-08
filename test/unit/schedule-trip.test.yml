@@ -1,0 +1,15 @@
+---
+configuration:
+  locales: en-US
+---
+- test: Schedule a trip
+- "Schedule a trip to Mercury leaving Friday and returning next Thursday":
+  - prompt: I've got you down for a trip to Mercury, leaving on Friday and returning next Thursday.
+---
+- test: Plan a trip
+- "Plan a trip between June 9th and June 17th to visit Mars":
+  - prompt: I've got you down for a trip to Mars, leaving on June 9th and returning June 17th.
+---
+- test: Plan a trip (synonym)
+- "Plan a trip between June 9th and June 17th to visit the swift planet":
+  - prompt: I've got you down for a trip to Mercury, leaving on June 9th and returning June 17th.
