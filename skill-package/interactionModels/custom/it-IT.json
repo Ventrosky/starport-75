@@ -33,7 +33,10 @@
                 {
                     "name": "ScheduleTripIntent",
                     "samples": [
+                        "programma un viaggio",
+                        "pianifica un viaggio",
                         "programma un viaggio verso {destination} partendo il {departureDate} e tornando il {returnDate}",
+                        "pianifica un viaggio per {destination} dal {departureDate} al {returnDate}",
                         "pianifica un viaggio dal {departureDate} al {returnDate} per visitare {destination}"
                     ],
                     "slots": [
@@ -60,7 +63,6 @@
                     "samples": []
                 }
             ],
-           
             "types": [
                 {
                     "name": "PLANETS",
@@ -155,7 +157,98 @@
                     ]
                 }
             ]
-        }
+        },
+        "dialog": {
+            "delegationStrategy": "ALWAYS",
+            "intents": [
+                {
+                    "name": "ScheduleTripIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirmation.ScheduleTrip"
+                    },
+                    "slots": [
+                        {
+                            "name": "destination",
+                            "type": "PLANETS",
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Slot.Elicitation.ScheduleTrip.Destination"
+                            }
+                        },
+                        {
+                            "name": "departureDate",
+                            "type": "AMAZON.DATE",
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Slot.Elicitation.ScheduleTrip.DepartureDate"
+                            }
+                        },
+                        {
+                            "name": "returnDate",
+                            "type": "AMAZON.DATE",
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Slot.Elicitation.ScheduleTrip.ReturnDate"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Slot.Elicitation.ScheduleTrip.Destination",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Dove vuoi andare?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Quale pianeta vorresti visitare?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Elicitation.ScheduleTrip.DepartureDate",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Quando vuoi partire?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Quando desideri iniziare il tuo viaggio?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Elicitation.ScheduleTrip.ReturnDate",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Quando vorresti partire?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Quando finirà il tuo viaggio?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirmation.ScheduleTrip",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Ti ho preparato un viaggio per {destination} con partenza {departureDate} e ritorno {returnDate}. Corretto?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Vuoi visitare {destination} dal {departureDate} al {returnDate}. Corretto?"
+                    }
+                ]
+            }
+        ]
     }
-  }
-  
+}
