@@ -1,29 +1,31 @@
 {
-    "name": "hello-world",
-    "version": "1.1.0",
-    "description": "alexa utility for quickly building skills",
-    "main": "./lambda/index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "test:flow": "node ./test/testflow/testflow.js",
-      "test:dialog": "ask dialog --locale it-IT",
-      "test:astf": "mocha ./test/astf/hello-test.js",
-      "test:bst": "bst test --jest.collectCoverage=false"
-    },
-    "author": "Amazon Alexa",
-    "license": "ISC",
-    "dependencies": {
-      "ask-sdk": "^2.11.0",
-      "ask-sdk-core": "^2.11.0",
-      "ask-sdk-model": "^1.36.1",
-      "aws-sdk": "^2.326.0",
-      "i18next": "^20.3.5"
-    },
-    "devDependencies": {
-      "alexa-skill-test-framework": "^1.2.4",
-      "ask-cli": "^2.24.1",
-      "bespoken-tools": "^2.4.100",
-      "mocha": "^9.0.3"
-    }
+  "name": "hello-world",
+  "version": "1.1.0",
+  "description": "alexa utility for quickly building skills",
+  "main": "./lambda/index.js",
+  "scripts": {
+    "lint": "eslint .  --ext .js",
+    "lint:fix": "eslint --fix .  --ext .js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:flow": "node ./test/testflow/testflow.js",
+    "test:dialog": "ask dialog --locale it-IT",
+    "test:astf": "mocha ./test/astf/hello-test.js",
+    "test:bst": "bst test --jest.collectCoverage=false"
+  },
+  "author": "Amazon Alexa",
+  "license": "ISC",
+  "dependencies": {
+    "ask-sdk": "^2.11.0",
+    "ask-sdk-core": "^2.11.0",
+    "ask-sdk-model": "^1.36.1",
+    "aws-sdk": "^2.326.0",
+    "i18next": "^20.3.5"
+  },
+  "devDependencies": {
+    "alexa-skill-test-framework": "^1.2.4",
+    "ask-cli": "^2.24.1",
+    "bespoken-tools": "^2.4.100",
+    "eslint": "^7.32.0",
+    "mocha": "^9.0.3"
   }
-  
+}
