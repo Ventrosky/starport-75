@@ -5,6 +5,9 @@ module.exports = {
             HELLO_MSG: 'Have a stellar day!',
             SCHEDULED_MSG: "You're all set. Enjoy your trip to {{destination}}!",
             DENIED_MSG: "Okay, I'll cancel your trip. What can I do for you now?",
+            DATE_MSG: "Star Port Seventy Five specializes in space travel, " +
+                "not time travel. Please specify a return date that is " +
+                "after the departure date.",
             HELP_MSG: 'You can say hello to me! How can I help?',
             GOODBYE_MSG: 'Goodbye!',
             REFLECTOR_MSG: 'You just triggered {{intentName}}',
@@ -19,6 +22,9 @@ module.exports = {
             HELLO_MSG: 'Buona giornata stellare!',
             SCHEDULED_MSG: "É tutto pronto. Buon viaggio verso {{destination}}!",
             DENIED_MSG: "Okay, cancellerò il tuo viaggio. Cosa posso fare per te?",
+            DATE_MSG: "Star Port Seventy Five è specializzato in viaggi spaziali, " +
+                "non il viaggio nel tempo. Si prega di specificare una data di ritorno che sia " +
+                "dopo la data di partenza.",
             HELP_MSG: 'Puoi salutarmi! Come posso aiutare?',
             GOODBYE_MSG: 'Arrivederci!',
             REFLECTOR_MSG: 'Hai appena triggerato {{intentName}}',

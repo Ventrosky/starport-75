@@ -5,7 +5,8 @@ const ScheduleTripIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' 
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ScheduleTripIntent' 
-            && Alexa.getRequest(handlerInput.requestEnvelope).intent.confirmationStatus === 'CONFIRMED';
+            && Alexa.getRequest(handlerInput.requestEnvelope).intent.confirmationStatus === 'CONFIRMED'
+            && Alexa.getDialogState(handlerInput.requestEnvelope) !== 'COMPLETED';
     },
     handle(handlerInput) {
         const destination = getResolvedSlotValue(handlerInput.requestEnvelope, 'destination');
@@ -19,6 +20,36 @@ const ScheduleTripIntentHandler = {
             .withShouldEndSession(true)
             .getResponse();
     },
+};
+
+const ScheduleTripIntentHandler_InProgress = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' 
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ScheduleTripIntent' 
+            && Alexa.getDialogState(handlerInput.requestEnvelope) !== 'COMPLETED';
+    },
+    handle(handlerInput) {
+        const currentIntent = handlerInput.requestEnvelope.request.intent;
+        const departureString = Alexa.getSlotValue(handlerInput.requestEnvelope, 'departureDate');
+        const returnString = Alexa.getSlotValue(handlerInput.requestEnvelope, 'returnDate');
+        if (departureString && returnString) {
+            const departureDate = new Date(departureString);
+            const returnDate = new Date(returnString);
+            if (departureDate >= returnDate) {
+                currentIntent.slots['returnDate'].value = null;
+                const speakOutput = handlerInput.t('DATE_MSG');
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    // sends a directive to Alexa, telling her to carry on with automatic dialog delegation
+                    // same as if we had set the “delegationStrategy” to “ALWAYS”.
+                    .addDelegateDirective(currentIntent)
+                    .getResponse();
+            }
+        }
+        return handlerInput.responseBuilder
+            .addDelegateDirective(currentIntent)
+            .getResponse();
+        },
 };
 
 const ScheduleTripIntentHandler_DENIED = {
@@ -39,5 +70,6 @@ const ScheduleTripIntentHandler_DENIED = {
 
 module.exports={
     Confirmed: ScheduleTripIntentHandler,
-    Denied: ScheduleTripIntentHandler_DENIED
+    Denied: ScheduleTripIntentHandler_DENIED,
+    InProgress: ScheduleTripIntentHandler_InProgress,
 }

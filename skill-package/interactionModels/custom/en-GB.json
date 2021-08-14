@@ -159,7 +159,7 @@
             ]
         },
         "dialog": {
-            "delegationStrategy": "ALWAYS",
+            "delegationStrategy": "SKILL_RESPONSE",
             "intents": [
                 {
                     "name": "ScheduleTripIntent",
@@ -195,7 +195,15 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Slot.Elicitation.ScheduleTrip.DepartureDate"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInDuration",
+                                    "prompt": "Slot.Validation.DepartureDateInTheFuture",
+                                    "start": "P1D",
+                                    "end": "P30D"
+                                }
+                            ]
                         },
                         {
                             "name": "returnDate",
@@ -203,7 +211,15 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Slot.Elicitation.ScheduleTrip.ReturnDate"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInDuration",
+                                    "prompt": "Slot.Validation.ReturnDateInTheFuture",
+                                    "start": "P1D",
+                                    "end": "P60D"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -272,6 +288,32 @@
                 {
                   "type": "PlainText",
                   "value": "Wouldn't you like to get a bit further away? Which other planet do you want to visit?"
+                }
+              ]
+            },
+            {
+              "id": "Slot.Validation.DepartureDateInTheFuture",
+              "variations": [
+                {
+                  "type": "PlainText",
+                  "value": "Your departure date must be within the next 30 days."
+                },
+                {
+                  "type": "PlainText",
+                  "value": "We only schedule trips leaving within the next 30 days."
+                }
+              ]
+            },
+            {
+              "id": "Slot.Validation.ReturnDateInTheFuture",
+              "variations": [
+                {
+                  "type": "PlainText",
+                  "value": "Your return date must be within the next 60 days."
+                },
+                {
+                  "type": "PlainText",
+                  "value": "We only schedule trips returning within the next 60 days."
                 }
               ]
             },
