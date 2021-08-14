@@ -2,6 +2,8 @@ module.exports = {
     en: {
         translation: {
             WELCOME_MSG: 'Welcome to Star Port 75 Travel. How can I help you?',
+            WELCOME_MSG_PERSONAL: 'Welcome back to Star Port 75 Travel, ' +
+                '{{givenName}}! How can I help you?',
             HELLO_MSG: 'Have a stellar day!',
             SCHEDULED_MSG: "You're all set. Enjoy your trip to {{destination}}!",
             DENIED_MSG: "Okay, I'll cancel your trip. What can I do for you now?",
@@ -19,6 +21,8 @@ module.exports = {
     it: {
         translation: {
             WELCOME_MSG: 'Benvenuto a Star Port 75 Travel. Come posso aiutarti?',
+            WELCOME_MSG_PERSONAL: 'Bentornato a Star Port 75 Travel, ' +
+                '{{givenName}}! Come posso aiutarti?',
             HELLO_MSG: 'Buona giornata stellare!',
             SCHEDULED_MSG: "É tutto pronto. Buon viaggio verso {{destination}}!",
             DENIED_MSG: "Okay, cancellerò il tuo viaggio. Cosa posso fare per te?",

@@ -38,6 +38,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addErrorHandlers(
         StandardHandlers.ErrorHandler,
         )
+    .withApiClient(new Alexa.DefaultApiClient())
     .addRequestInterceptors(
         LocalisationRequestInterceptor
         )

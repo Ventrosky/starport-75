@@ -1,5 +1,10 @@
 {
   "manifest": {
+    "permissions": [
+      {
+        "name": "alexa::profile:given_name:read"
+      }
+    ],
     "publishingInformation": {
       "locales": {
         "en-US": {

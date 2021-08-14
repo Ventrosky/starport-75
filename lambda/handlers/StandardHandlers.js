@@ -4,8 +4,27 @@ const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
-    handle(handlerInput) {
-        const speakOutput = handlerInput.t('WELCOME_MSG');
+    async handle(handlerInput) {
+        const { serviceClientFactory, responseBuilder } = handlerInput;
+
+        let speakOutput = handlerInput.t('WELCOME_MSG');
+
+        try {
+            const upsClient = serviceClientFactory.getUpsServiceClient();
+            const givenName = await upsClient.getProfileGivenName();
+            speakOutput = handlerInput.t('WELCOME_MSG_PERSONAL',
+                {
+                    givenName: givenName
+                });
+        } catch (error) {
+            if (error.name === 'ServiceError' && error.statusCode == 403) {
+                responseBuilder
+                    .withAskForPermissionsConsentCard([
+                        'alexa::profile:given_name:read'])
+            } else {
+                console.error("Error reading the given name: ", error);
+            }
+        }
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
