@@ -174,7 +174,20 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Slot.Elicitation.ScheduleTrip.Destination"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.UnknownDestination"
+                                },
+                                {
+                                    "type": "isNotInSet",
+                                    "prompt": "Slot.Validation.NoStaycations",
+                                    "values": [
+                                        "earth"
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "name": "departureDate",
@@ -235,6 +248,32 @@
                         "value": "Quando finirà il tuo viaggio?"
                     }
                 ]
+            },
+            {
+                "id": "Slot.Validation.UnknownDestination",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Star Port 75 Travel non offre viaggi verso {destination}. Dove altro vorresti andare?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "{destination} sembra un viaggio meraviglioso. Sfortunatamente, non serviamo quella destinazione. Scegli un'altra destinazione."
+                    }
+                ]
+            },
+            {
+              "id": "Slot.Validation.NoStaycations",
+              "variations": [
+                {
+                  "type": "PlainText",
+                  "value": "Star Port 75 doesn't specialize in stay-cations. Where else would you like to go?"
+                },
+                {
+                  "type": "PlainText",
+                  "value": "Wouldn't you like to get a bit further away? Which other planet do you want to visit?"
+                }
+              ]
             },
             {
                 "id": "Confirmation.ScheduleTrip",
