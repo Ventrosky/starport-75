@@ -26,6 +26,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         StandardHandlers.LaunchRequestHandler,
         HelloWorldIntentHandler,
+        ScheduleTripIntentHandler.Link,
         ScheduleTripIntentHandler.Confirmed,
         ScheduleTripIntentHandler.InProgress,
         ScheduleTripIntentHandler.Denied,

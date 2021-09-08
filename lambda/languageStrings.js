@@ -11,6 +11,10 @@ module.exports = {
                 "not time travel. Please specify a return date that is " +
                 "after the departure date.",
             HELP_MSG: 'You can say hello to me! How can I help?',
+            LINK_MSG: "You'll need to link the Star Port " +
+                "75 Travel skill with your Google Calendar so " +
+                "that I can schedule your trip. I've added a " +
+                "card in the Alexa app to help you with that.",
             GOODBYE_MSG: 'Goodbye!',
             REFLECTOR_MSG: 'You just triggered {{intentName}}',
             FALLBACK_MSG: 'Sorry, I don\'t know about that. Please try again.',
@@ -30,6 +34,8 @@ module.exports = {
                 "non il viaggio nel tempo. Si prega di specificare una data di ritorno che sia " +
                 "dopo la data di partenza.",
             HELP_MSG: 'Puoi salutarmi! Come posso aiutare?',
+            LINK_MSG: "Dovrai collegare la skill Star Port 75 Travel con il tuo account Google Calendar" +
+                "in modo che io possa pianificare un viaggio. Ho aggiunto una card nel app Alexa per aiutarti.",
             GOODBYE_MSG: 'Arrivederci!',
             REFLECTOR_MSG: 'Hai appena triggerato {{intentName}}',
             FALLBACK_MSG: 'Mi dispiace, non lo so. Per favore riprova.',

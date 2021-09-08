@@ -1,4 +1,5 @@
 const Alexa = require('ask-sdk-core');
+const TripSaver = require('./GoogleCalendarTripSaver');
 const getResolvedSlotValue = require('../Helpers');
 
 const ScheduleTripIntentHandler = {
@@ -8,10 +9,13 @@ const ScheduleTripIntentHandler = {
             && Alexa.getRequest(handlerInput.requestEnvelope).intent.confirmationStatus === 'CONFIRMED'
             && Alexa.getDialogState(handlerInput.requestEnvelope) !== 'COMPLETED';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         const destination = getResolvedSlotValue(handlerInput.requestEnvelope, 'destination');
-        // const departureDate = Alexa.getSlotValue(handlerInput.requestEnvelope, 'departureDate');
-        // const returnDate = Alexa.getSlotValue(handlerInput.requestEnvelope, 'returnDate');
+        const departureDate = Alexa.getSlotValue(handlerInput.requestEnvelope, 'departureDate');
+        const returnDate = Alexa.getSlotValue(handlerInput.requestEnvelope, 'returnDate');
+
+        await TripSaver.saveTrip(handlerInput, destination, departureDate, returnDate);
+
         const speakOutput = handlerInput.t('SCHEDULED_MSG', {
             destination: destination
         });
@@ -68,8 +72,24 @@ const ScheduleTripIntentHandler_DENIED = {
     },
 };
 
+const ScheduleTripIntentHandler_Link = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' 
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ScheduleTripIntent' 
+            && !Alexa.getAccountLinkingAccessToken(handlerInput.requestEnvelope);
+    },
+    handle(handlerInput) {
+        const speakOutput = handlerInput.t('LINK_MSG');
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .withLinkAccountCard()
+            .getResponse();
+    },
+};
+
 module.exports={
     Confirmed: ScheduleTripIntentHandler,
     Denied: ScheduleTripIntentHandler_DENIED,
     InProgress: ScheduleTripIntentHandler_InProgress,
+    Link: ScheduleTripIntentHandler_Link,
 }
